@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이도현 | IT 영업 기획·전략 전문가</title>
+    
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Pretendard', 'sans-serif'] },
+                    colors: {
+                        primary: '#0f172a',    // Dark Navy
+                        secondary: '#1e293b',  // Slate 800
+                        accent: '#2563eb',     // Blue 600
+                        accentLight: '#3b82f6',// Blue 500
+                        highlight: '#06b6d4',  // Cyan 500
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(37, 99, 235, 0.4)',
+                        'card': '0 10px 30px -5px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #f8fafc; overflow-x: hidden; }
+        
+        /* Glassmorphism */
+        .glass-dark { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-light { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(226, 232, 240, 0.8); }
+
+        /* Scroll Animations (Restored) */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        /* Animation Delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+
+        /* Image Cropper for watermark removal */
+        .watermark-crop { overflow: hidden; }
+        .watermark-crop img {
+            transform: scale(1.12); 
+            transform-origin: center top;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Gradients */
+        .text-gradient { background: linear-gradient(to right, #60a5fa, #22d3ee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased selection:bg-accentLight selection:text-white">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#hero" class="text-xl md:text-2xl font-extrabold text-white tracking-tighter drop-shadow-md flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-gradient-to-tr from-accent to-highlight flex items-center justify-center text-white text-sm">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                DOHYUN LEE
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-white/90">
+                <a href="#about" class="hover:text-highlight transition">Core Competencies</a>
+                <a href="#projects" class="hover:text-highlight transition">Key Projects</a>
+                <a href="#experience" class="hover:text-highlight transition">Experience</a>
+            </div>
+            <a href="#contact" class="px-5 py-2 bg-accent hover:bg-accentLight text-white rounded-full text-sm font-bold transition shadow-glow">Contact Me</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="relative min-h-screen flex items-center justify-center bg-primary overflow-hidden pt-20 pb-12">
+        <div class="absolute top-0 right-0 w-3/4 h-3/4 bg-gradient-to-bl from-accent/20 to-transparent rounded-bl-full blur-[80px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-highlight/10 to-transparent rounded-tr-full blur-[80px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full flex flex-col-reverse lg:flex-row items-center gap-12 z-10 mt-10">
+            
+            <div class="flex-1 space-y-6 text-center lg:text-left reveal-left">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-highlight border border-highlight/30 text-xs md:text-sm font-bold shadow-glow">
+                    <span class="w-2 h-2 rounded-full bg-highlight animate-pulse"></span>
+                    비즈니스의 판을 짜는 사업 전략 리더 (Biz PM)
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.25] tracking-tight break-keep">
+                    데이터 분석 기반의<br> IT 솔루션 기획과 <br>
+                    <span class="text-gradient">크로스펑셔널 협업으로</span><br>
+                    B2B 세일즈 성과를 창출합니다.
+                </h1>
+                <p class="text-slate-300 text-base md:text-lg font-light max-w-2xl mx-auto lg:mx-0 break-keep leading-relaxed mt-4">
+                    15년 이상의 현장 비즈니스 경험에 <strong>SQL/BigQuery 데이터 분석력</strong>과 <strong>대규모 IT 프로젝트 리딩(PM) 역량</strong>을 결합하여, 직관이 아닌 수치화된 전략으로 기업의 비즈니스 확장을 이끕니다.
+                </p>
+                
+                <div class="pt-4 flex flex-wrap justify-center lg:justify-start gap-3">
+                    <span class="px-3 py-1.5 glass-dark border border-slate-700 text-slate-200 rounded-lg text-sm font-semibold flex items-center gap-2"><i class="fas fa-database text-blue-400"></i> SQL (BigQuery/MySQL)</span>
+                    <span class="px-3 py-1.5 glass-dark border border-slate-700 text-slate-200 rounded-lg text-sm font-semibold flex items-center gap-2"><i class="fab fa-python text-yellow-400"></i> Python / VBA</span>
+                    <span class="px-3 py-1.5 glass-dark border border-slate-700 text-slate-200 rounded-lg text-sm font-semibold flex items-center gap-2"><i class="fas fa-chart-line text-orange-400"></i> GA & Looker Studio</span>
+                    <span class="px-3 py-1.5 glass-dark border border-slate-700 text-slate-200 rounded-lg text-sm font-semibold flex items-center gap-2"><i class="fas fa-project-diagram text-green-400"></i> IT PM / SI</span>
+                </div>
+            </div>
+            
+            <div class="flex-1 w-full flex justify-center lg:justify-end reveal-right">
+                <div class="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] animate-float">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-accent to-highlight rounded-[2rem] rotate-6 opacity-70 blur-md"></div>
+                    <!-- Image with watermark crop -->
+                    <div class="w-full h-full watermark-crop rounded-[2rem] border-4 border-slate-800 relative z-10 shadow-2xl bg-slate-700">
+                        <img src="Gemini_Generated_Image_exp59dexp59dexp5.png" alt="이도현 프로필">
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -left-6 md:-left-12 glass-dark p-4 md:p-5 rounded-2xl shadow-xl border border-white/10 z-20 flex items-center gap-4">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-accent/20 flex items-center justify-center text-highlight text-xl md:text-2xl">
+                            <i class="fas fa-arrow-trend-up"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider font-bold">최대 손익(P&L) 개선</p>
+                            <p class="text-xl md:text-3xl font-extrabold text-white">253<span class="text-highlight">%</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white relative z-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-accent font-bold tracking-wider uppercase text-sm border-b-2 border-accent pb-1">Core Competencies</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold mt-4 text-primary">아이티스코가 원하는 3가지 핵심 역량</h2>
+                <p class="text-slate-500 mt-4 max-w-2xl mx-auto break-keep text-lg">단순한 운영을 넘어 데이터를 기반으로 비즈니스의 답을 찾습니다.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Competency 1 (아이콘 확실하게 추가) -->
+                <div class="glass-light rounded-3xl p-8 shadow-card border border-slate-200 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 reveal delay-100 flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 rounded-2xl bg-blue-50 text-accent flex items-center justify-center text-4xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold mb-4 text-primary break-keep">1. 데이터 기반 IT 솔루션 기획<br>및 영업 전략 수립</h3>
+                    <p class="text-slate-600 text-sm mb-6 break-keep leading-relaxed border-b border-slate-100 pb-6">
+                        고객 요구 분석과 시장 리서치를 통해 B2B 플랫폼 비즈니스 모델(BM)을 기획하고 최적의 솔루션을 제안합니다.
+                    </p>
+                    <ul class="space-y-3 text-slate-700 text-sm font-medium text-left w-full">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-accentLight mt-0.5"></i> 유저 여정(Funnel) 트래킹 & CRM 분석</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-accentLight mt-0.5"></i> 핵심 타깃 리드(Lead) 발굴 및 수주 증대</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-accentLight mt-0.5"></i> SQL/BigQuery 활용 데이터 타당성 검증</li>
+                    </ul>
+                </div>
+                
+                <!-- Competency 2 (아이콘 확실하게 추가) -->
+                <div class="glass-light rounded-3xl p-8 shadow-card border border-slate-200 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 reveal delay-200 flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 rounded-2xl bg-cyan-50 text-highlight flex items-center justify-center text-4xl mb-6 group-hover:bg-highlight group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <i class="fas fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold mb-4 text-primary break-keep">2. 대규모 프로젝트 매니지먼트<br>및 사업 운영 총괄</h3>
+                    <p class="text-slate-600 text-sm mb-6 break-keep leading-relaxed border-b border-slate-100 pb-6">
+                        데이터를 기반으로 자산을 최적화하며, IT 프로젝트의 전략 기획부터 현장 실행, 지속적 관계 유지(Retention)를 주도합니다.
+                    </p>
+                    <ul class="space-y-3 text-slate-700 text-sm font-medium text-left w-full">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-highlight mt-0.5"></i> 315개 다거점 인프라 관리 및 P&L 최적화</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-highlight mt-0.5"></i> AI 모빌리티 솔루션 신규 앱/플랫폼 기획</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-highlight mt-0.5"></i> 주요 기관(의료/공공) B2B 전략적 파트너십</li>
+                    </ul>
+                </div>
+
+                <!-- Competency 3 (아이콘 확실하게 추가) -->
+                <div class="glass-light rounded-3xl p-8 shadow-card border border-slate-200 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 reveal delay-300 flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 rounded-2xl bg-indigo-50 text-indigo-500 flex items-center justify-center text-4xl mb-6 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <i class="fas fa-users-gear"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold mb-4 text-primary break-keep">3. 크로스펑셔널 협업 및<br>IT 시스템 문제 해결</h3>
+                    <p class="text-slate-600 text-sm mb-6 break-keep leading-relaxed border-b border-slate-100 pb-6">
+                        개발, 세일즈, CS 유관 부서 간의 커뮤니케이션을 주도하여 IT 솔루션 도입(SI) 시 발생하는 병목 현상을 해결합니다.
+                    </p>
+                    <ul class="space-y-3 text-slate-700 text-sm font-medium text-left w-full">
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-indigo-400 mt-0.5"></i> IT 시스템 통합(SI) 환경의 이해관계자 조율</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-indigo-400 mt-0.5"></i> Python/VBA 업무 프로세스 및 리포팅 자동화</li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check-circle text-indigo-400 mt-0.5"></i> 단말기 장애 데이터 직접 추출 및 현장 조치</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-primary text-white relative z-20 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-accentLight font-bold tracking-wider uppercase text-sm">Key Projects</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold mt-4 text-white">숫자로 증명된 비즈니스 임팩트</h2>
+                <p class="text-slate-400 mt-4 break-keep">문제 정의부터 데이터 기반의 기획, 그리고 확실한 성과 창출까지의 과정입니다.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Socar -->
+                <div class="bg-secondary p-8 rounded-3xl border border-slate-700 hover:border-accent transition duration-300 reveal delay-100 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="px-3 py-1 bg-accent/20 text-accentLight rounded text-xs font-bold uppercase tracking-wider">Biz PM</div>
+                        <div class="text-right text-slate-400 text-sm"><i class="fas fa-building mr-1"></i> (주)쏘카</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 break-keep">데이터 기반 쏘카 다거점 인프라<br>P&L(손익) 최적화 및 B2B 확장</h3>
+                    <p class="text-slate-400 text-sm mb-6 break-keep flex-grow">
+                        BigQuery를 활용해 지역 상권의 수요와 유저 패턴을 분석, 맞춤형 다이내믹 프라이싱 및 차량 배치 전략을 수립했습니다. 또한 대형 주차/부동산 사업체 대상 B2B 제휴를 주도했습니다.
+                    </p>
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-arrow-trend-up text-highlight text-lg"></i>
+                            <span class="font-bold text-white">Key Results</span>
+                        </div>
+                        <ul class="text-sm text-slate-300 space-y-1">
+                            <li>• 대당 손익(YoY) <strong class="text-highlight">253% 개선</strong> 및 사고율 114% 감소</li>
+                            <li>• B2B 제휴를 통한 쏘카존 <strong class="text-white">185% 확대 (315개)</strong></li>
+                            <li>• 코로나19 위기 시 선제적 자산 감축으로 목표 손익 97% 방어</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- DGT -->
+                <div class="bg-secondary p-8 rounded-3xl border border-slate-700 hover:border-highlight transition duration-300 reveal delay-200 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="px-3 py-1 bg-highlight/20 text-highlight rounded text-xs font-bold uppercase tracking-wider">Service PM</div>
+                        <div class="text-right text-slate-400 text-sm"><i class="fas fa-building mr-1"></i> 디지티모빌리티</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 break-keep">AI 운전 분석 모빌리티 앱 기획<br>및 파트너십(MOU) 총괄</h3>
+                    <p class="text-slate-400 text-sm mb-6 break-keep flex-grow">
+                        OBD-II/GPS 연동 실시간 위험 피드백 시스템인 신규 앱 '펜스온'을 기획하고 리텐션(등급제)을 설계했습니다. Python을 활용해 리포트 및 단말기 장애 조치를 자동화했습니다.
+                    </p>
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-arrow-trend-up text-highlight text-lg"></i>
+                            <span class="font-bold text-white">Key Results</span>
+                        </div>
+                        <ul class="text-sm text-slate-300 space-y-1">
+                            <li>• 신규 AI 모빌리티 앱 <strong class="text-highlight">성공적 론칭</strong> 및 서비스 고도화</li>
+                            <li>• 주요 의료기관(수월한방병원 등) <strong class="text-white">전략적 B2B MOU 체결</strong></li>
+                            <li>• Python 매크로 구축을 통한 부서 간 업무 리소스 획기적 절감</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cartax -->
+                <div class="bg-secondary p-8 rounded-3xl border border-slate-700 hover:border-purple-500 transition duration-300 reveal delay-100 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded text-xs font-bold uppercase tracking-wider">Data PM</div>
+                        <div class="text-right text-slate-400 text-sm"><i class="fas fa-building mr-1"></i> (주)카택스</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 break-keep">B2B SaaS 유저 여정(Funnel)<br>통합 데이터 대시보드 구축</h3>
+                    <p class="text-slate-400 text-sm mb-6 break-keep flex-grow">
+                        유입부터 온보딩, 결제까지 이어지는 CRM 데이터를 Looker Studio로 통합 시각화했습니다. 데이터를 근거로 타깃 기업별 노코드 랜딩페이지를 퍼블리싱하고 매체 예산을 최적화했습니다.
+                    </p>
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-arrow-trend-up text-highlight text-lg"></i>
+                            <span class="font-bold text-white">Key Results</span>
+                        </div>
+                        <ul class="text-sm text-slate-300 space-y-1">
+                            <li>• 마케팅 대시보드 기획으로 예산 최적화 <strong class="text-highlight">ROI 241% 개선</strong></li>
+                            <li>• 타깃 맞춤형 SEO/캠페인 집행으로 <strong class="text-white">월 가입자 수 YoY 160% 증가</strong></li>
+                            <li>• 개발/CS 부서 병목 조율 및 정기 B2B 웨비나 신규 론칭</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- OTM -->
+                <div class="bg-secondary p-8 rounded-3xl border border-slate-700 hover:border-emerald-500 transition duration-300 reveal delay-200 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs font-bold uppercase tracking-wider">Biz PM</div>
+                        <div class="text-right text-slate-400 text-sm"><i class="fas fa-building mr-1"></i> 오티엠 (OTM)</div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 break-keep">신규 비즈니스 모델(BM)<br>기획 및 가맹 세일즈 리딩</h3>
+                    <p class="text-slate-400 text-sm mb-6 break-keep flex-grow">
+                        시장 트렌드 리서치를 바탕으로 신규 브랜드('제비집') 수익 구조를 설계했습니다. 잠재 고객 DB 수집부터 계약, 인테리어 세팅까지 전 과정을 총괄하며 이해관계자를 조율했습니다.
+                    </p>
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fas fa-arrow-trend-up text-highlight text-lg"></i>
+                            <span class="font-bold text-white">Key Results</span>
+                        </div>
+                        <ul class="text-sm text-slate-300 space-y-1">
+                            <li>• 지점별 맞춤 전략 실행으로 24년 기준 연매출 <strong class="text-highlight">14억 원 증가</strong></li>
+                            <li>• 신규 사업장 세팅 간 법무/협력업체/점주 간 <strong class="text-white">리스크 선제적 조율</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <span class="text-accent font-bold tracking-wider uppercase text-sm border-b-2 border-accent pb-1">Experience Timeline</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold mt-4 text-primary">커리어 성장 스토리</h2>
+                <p class="text-slate-500 mt-4 break-keep">가독성을 높인 타임라인으로, 오프라인 현장에서 IT 데이터 기획으로 진화해 온 궤적을 확인하세요.</p>
+            </div>
+
+            <!-- Left-Aligned Timeline Wrapper -->
+            <div class="relative">
+                <!-- Vertical Line on the left -->
+                <div class="absolute left-[20px] md:left-[28px] top-4 bottom-10 w-[3px] bg-slate-200 rounded-full"></div>
+
+                <!-- Exp 1: DGT (디지티모빌리티 근무 일자 2025.07 ~ 현재 반영) -->
+                <div class="relative pl-[60px] md:pl-[80px] mb-16 reveal-right">
+                    <!-- Dot -->
+                    <div class="absolute left-[12px] md:left-[20px] top-2 w-[19px] h-[19px] rounded-full bg-accent border-4 border-slate-50 shadow-md"></div>
+                    <!-- Card -->
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-primary mb-1">(주)디지티모빌리티</h3>
+                                <p class="text-slate-600 font-semibold text-sm">전략기획실 실장 · 전략기획</p>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-blue-50 text-accent border border-blue-100 rounded-full text-xs font-bold self-start md:self-auto">2025.07 ~ 현재</span>
+                        </div>
+                        <p class="text-sm text-slate-700 break-keep leading-relaxed border-t border-slate-100 pt-4">
+                            AI 모빌리티 솔루션 신규 서비스 기획 총괄 및 가맹택시 옥외광고 신사업(BM) 구축. 파트너사 B2B 제휴 영업(의료기관 MOU 등)을 주도했습니다. <strong class="text-primary">Python/VBA 기반 장애 데이터 리포팅 자동화</strong>로 IT 시스템 통합(SI) 이슈에 선제적으로 대응하는 관리 체계를 확립했습니다.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Exp 2: OTM -->
+                <div class="relative pl-[60px] md:pl-[80px] mb-16 reveal-right delay-100">
+                    <div class="absolute left-[13px] md:left-[21px] top-2 w-[17px] h-[17px] rounded-full bg-slate-400 border-4 border-slate-50 shadow-sm"></div>
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-primary mb-1">오티엠(otm)</h3>
+                                <p class="text-slate-600 font-semibold text-sm">전략기획팀 팀장 · 전략기획</p>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold self-start md:self-auto">2023.04 ~ 2025.07</span>
+                        </div>
+                        <p class="text-sm text-slate-700 break-keep leading-relaxed border-t border-slate-100 pt-4">
+                            신규 F&B 브랜드('제비집', '톳불') 기획 론칭 및 B2B 가맹 세일즈를 리딩했습니다. 법무 등록부터 현장 세팅까지 본사-가맹점-협력사 간 다자간 이해관계를 조율하며, 데이터 기반 지점별 타깃 프로모션으로 연매출 14억 원 증대에 기여했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Exp 3: Cartax -->
+                <div class="relative pl-[60px] md:pl-[80px] mb-16 reveal-right delay-200">
+                    <div class="absolute left-[13px] md:left-[21px] top-2 w-[17px] h-[17px] rounded-full bg-slate-400 border-4 border-slate-50 shadow-sm"></div>
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-primary mb-1">(주)카택스</h3>
+                                <p class="text-slate-600 font-semibold text-sm">마케팅팀 팀장 · 마케팅전략</p>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold self-start md:self-auto">2022.05 ~ 2023.04</span>
+                        </div>
+                        <p class="text-sm text-slate-700 break-keep leading-relaxed border-t border-slate-100 pt-4">
+                            B2B 고객 유입-온보딩-결제 퍼널(Funnel)을 분석하는 <strong class="text-primary">Looker Studio 기반 CRM 대시보드를 기획</strong>했습니다. 매체 예산 최적화(SEO 등)로 광고 효율(ROAS)을 약 2배 개선했으며, IT 솔루션 실서비스 구현을 위해 기획·개발·영업·CS 부서 간 병목을 해결하는 크로스펑셔널 리더십을 발휘했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Exp 4: Socar -->
+                <div class="relative pl-[60px] md:pl-[80px] mb-16 reveal-right delay-300">
+                    <div class="absolute left-[13px] md:left-[21px] top-2 w-[17px] h-[17px] rounded-full bg-slate-400 border-4 border-slate-50 shadow-sm"></div>
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-primary mb-1">(주)쏘카</h3>
+                                <p class="text-slate-600 font-semibold text-sm">경북사업팀 팀장 · 전략기획</p>
+                            </div>
+                            <span class="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-bold self-start md:self-auto">2018.06 ~ 2020.08</span>
+                        </div>
+                        <p class="text-sm text-slate-700 break-keep leading-relaxed border-t border-slate-100 pt-4">
+                            <strong class="text-primary">BigQuery 및 크롤링 데이터를 활용</strong>해 315개 다거점 쏘카존의 지역 수요를 분석하고 맞춤형 가격/차종 배치 정책을 수립했습니다. 부동산 등 B2B 제휴 세일즈로 인프라를 185% 확장했으며, 코로나19 등 위기 시 자산 감축 및 현장 클레임 조율을 통해 대규모 플랫폼 운영을 안정화했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Exp 5: Foundational (수십 건의 점포 개발 텍스트 반영) -->
+                <div class="relative pl-[60px] md:pl-[80px] mb-8 reveal-right">
+                    <div class="absolute left-[13px] md:left-[21px] top-2 w-[17px] h-[17px] rounded-full bg-slate-300 border-4 border-slate-50 shadow-sm"></div>
+                    <div class="bg-slate-100 p-6 md:p-8 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-primary mb-2">커리어의 든든한 현장 세일즈 자산</h3>
+                        <p class="text-slate-500 text-sm mb-6 break-keep">오프라인 현장에서 발로 뛰며 체득한 B2B 세일즈와 상권 분석 경험입니다.</p>
+                        
+                        <div class="flex flex-col gap-4 text-left text-sm text-slate-700">
+                            <div class="flex flex-col md:flex-row md:items-start gap-3 border-b border-slate-200 pb-4">
+                                <span class="font-bold text-primary min-w-[140px]">브이성형외과 등</span>
+                                <span class="leading-relaxed">온라인 유입부터 최종 오프라인 결제까지 Full-Funnel 고객 여정 트래킹 전략 보드 기획 (2020.10 ~ 2022.05)</span>
+                            </div>
+                            <div class="flex flex-col md:flex-row md:items-start gap-3 border-b border-slate-200 pb-4">
+                                <span class="font-bold text-primary min-w-[140px]">(주)놀부</span>
+                                <span class="leading-relaxed">데이터 기반 영남권 투자 타당성 분석. 예비 창업자 맞춤 컨설팅을 통해 <strong class="text-accentLight">수십 건의 점포 개발</strong> 및 오픈 주도 (2015.03 ~ 2018.06)</span>
+                            </div>
+                            <div class="flex flex-col md:flex-row md:items-start gap-3">
+                                <span class="font-bold text-primary min-w-[140px]">롯데씨브이에스711</span>
+                                <span class="leading-relaxed">유동 인구 및 경쟁사 매출 분석을 통한 상권 입지 발굴. 타당성 기획을 통해 <strong class="text-accentLight">수십 건의 점포 개발</strong> 및 신규 계약 성사 (2011.08 ~ 2015.03)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-primary text-white text-center relative z-20 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 reveal">
+            <h2 class="text-2xl md:text-3xl font-extrabold mb-4 break-keep">아이티스코의 비즈니스 파이를 키울 준비가 되었습니다.</h2>
+            <p class="text-slate-400 mb-8 break-keep">면접에서 더 자세한 프로젝트 성과와 통합(SI) 영업 전략을 말씀드리고 싶습니다.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="mailto:hyuni19830219@gmail.com" class="w-full sm:w-auto px-8 py-4 bg-secondary hover:bg-slate-700 border border-slate-700 rounded-xl font-bold transition flex items-center justify-center gap-3">
+                    <i class="fas fa-envelope text-accentLight"></i> hyuni19830219@gmail.com
+                </a>
+                <a href="tel:010-9404-2219" class="w-full sm:w-auto px-8 py-4 bg-accent hover:bg-accentLight rounded-xl font-bold transition shadow-glow flex items-center justify-center gap-3">
+                    <i class="fas fa-phone"></i> 010-9404-2219
+                </a>
+            </div>
+        </div>
+        <div class="mt-16 text-slate-500 text-sm font-medium">
+            &copy; 2026 Dohyun LEE (Portfolio for ITISCO). All Rights Reserved.
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar behavior on scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-primary/95', 'backdrop-blur-md', 'shadow-md', 'border-slate-800');
+                    navbar.classList.remove('border-transparent');
+                } else {
+                    navbar.classList.remove('bg-primary/95', 'backdrop-blur-md', 'shadow-md', 'border-slate-800');
+                    navbar.classList.add('border-transparent');
+                }
+            });
+
+            // Intersection Observer for scroll animations (Restored and Verified)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            // Targets for animation
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
